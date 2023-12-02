@@ -1,5 +1,4 @@
 import sys
-import os
 import argparse
 
 def process_item(item):
@@ -33,7 +32,7 @@ def process_item(item):
 
 def main():
 
-    parser = argparse.ArgumentParser(description="Day 1 part 1 solver")
+    parser = argparse.ArgumentParser(description="Day 1 part 2 solver")
     parser.add_argument("--input", required=False, default="input.txt", help="Day 1 input as txt file, default of input.txt")
     args = parser.parse_args()
     input_path = args.input

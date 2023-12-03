@@ -10,17 +10,16 @@ from cryptography.fernet import Fernet
 
 
 def make_cache(cookies, key):
-    # try:
-    if key is not None:
-        key = base64.b64encode(hashlib.sha256(key.encode()).hexdigest().encode())[-45:-1]
-        fernet = Fernet(key)
-        cookies = fernet.encrypt(cookies.encode()).decode()
-        print(cookies)
+    try:
+        if key is not None:
+            key = base64.b64encode(hashlib.sha256(key.encode()).hexdigest().encode())[-45:-1]
+            fernet = Fernet(key)
+            cookies = fernet.encrypt(cookies.encode()).decode()
 
-    with open(".cookies_cache","w") as f:
-        f.write(cookies)
-    # except Exception as e:
-        # print(f"Caching cookies failed: {e}")
+        with open(".cookies_cache","w") as f:
+            f.write(cookies)
+    except Exception as e:
+        print(f"Caching cookies failed: {e}")
 
 def read_cache(key):
     try:
